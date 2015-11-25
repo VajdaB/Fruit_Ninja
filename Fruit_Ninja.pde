@@ -12,13 +12,15 @@ PImage coconutIMG;
 PImage backgroundIMG;
 PImage watermelonSlicedIMG;
 
-Fruit watermelon;
+Fruit fruit;
+
+//declare global variables
 
 void setup()
 {
   background (0);
   size (1000, 700);
-  watermelon = new Fruit();
+  fruit = new Fruit();
   /* watermelonIMG = loadImage ("watermelon.png");
   lemonIMG = loadImage ("lemon.png");
   pineappleIMG = loadImage ("pineapple.png");
@@ -31,6 +33,6 @@ void setup()
 void draw()
 {
   background(0);
-  watermelon.Update(mouseX, mouseY);
-  watermelon.Draw();
+  fruit.Update(mouseX, mouseY);
+  fruit.Draw();
 }

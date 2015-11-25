@@ -9,10 +9,16 @@ class Fruit
   private PImage _imgSliced;
   
   private boolean _isSliced;
+  private PImage [] _fruits;
   
   Fruit()
-  {
-    _img = loadImage ("watermelon.png");
+  { //<>//
+    _fruits = new PImage[4];
+    _fruits[0] = loadImage("tomato.png");
+    _fruits[1] = loadImage("watermelon.png");
+    _fruits[2] = loadImage("lemon.png");
+    _fruits[3] = loadImage("coconut.png");
+    _img = _fruits[(int)random(4)];
     _imgSliced = loadImage ("watermelonSliced.jpg");
     _x = random(width);
     _y = 0;
@@ -42,6 +48,10 @@ class Fruit
    
    //making it fall
    _y = _y + (random (2, 7));
+   /*if(_y > height)
+   {
+     Draw(_img = _fruits[(int)random(4)]);
+   }*/
  }
  
  private void CheckSliced(int x, int y)
