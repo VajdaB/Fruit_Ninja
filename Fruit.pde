@@ -10,16 +10,24 @@ class Fruit
   
   private boolean _isSliced;
   private PImage [] _fruits;
+  private int _a;
+  private PImage [] _fruitsSliced;
   
   Fruit()
   { //<>//
+    _a = (int)random(4);
+    _fruits = new PImage[4];
     _fruits = new PImage[4];
     _fruits[0] = loadImage("tomato.png");
     _fruits[1] = loadImage("watermelon.png");
     _fruits[2] = loadImage("lemon.png");
     _fruits[3] = loadImage("coconut.png");
-    _img = _fruits[(int)random(4)];
-    _imgSliced = loadImage ("watermelonSliced.jpg");
+    _img = _fruits[_a];
+    _fruitsSliced[0] = loadImage();
+    _fruitsSliced[1] = loadImage();
+    _fruitsSliced[2] = loadImage();
+    _fruitsSliced[3] = loadImage();
+    _imgSliced = _fruitsSliced[_a];
     _x = random(width);
     _y = 0;
     _w = _img.width;
