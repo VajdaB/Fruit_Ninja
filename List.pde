@@ -12,3 +12,5 @@ fruit_ninja_bomb
 
 The JPGs:
 background
+
+*/
