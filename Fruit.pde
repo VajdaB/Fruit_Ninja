@@ -12,6 +12,7 @@ class Fruit
   private PImage [] _fruits;
   private int _a;
   private PImage [] _fruitsSliced;
+  private boolean _areAllFruitsSliced;
   
   Fruit()
   { //<>//
@@ -33,6 +34,7 @@ class Fruit
     _w = _img.width;
     _h = _img.height;
     _isSliced = false;
+    _areAllFruitsSliced = false;
   }
  public void Draw()
  {
@@ -56,11 +58,15 @@ class Fruit
    
    //making it fall
    _y = _y + (random (2, 7));
-   /*if(_y > height)
-   {
-     Draw(_img = _fruits[(int)random(4)]);
-   }*/
+   
  }
+ 
+ public boolean isSliced()
+ {
+   return _isSliced;
+ }
+ 
+ 
  
  private void CheckSliced(int x, int y)
  {

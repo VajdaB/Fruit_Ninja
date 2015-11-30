@@ -43,6 +43,12 @@ void draw()
   {
     fruit[i].Update(mouseX, mouseY);
     fruit[i].Draw();
+    if (fruit[i].isSliced() == true)
+    {
+      fruit[i] = new Fruit();
+      fruit[i].Update(mouseX, mouseY);
+      fruit[i].Draw();
+    }
   }
   bomb.Update(mouseX, mouseY);
   bomb.explode();
