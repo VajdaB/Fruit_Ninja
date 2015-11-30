@@ -68,17 +68,15 @@ class Fruit
    return _isSliced;
  }
  
- 
- 
  private void CheckSliced(int x, int y)
  {
-  if (x > _x)
+  if (scaledX > _x)
   {
-    if (x < _x + _w)
+    if (scaledX < _x + _w)
     {
-      if (y > _y)
+      if (scaledY > _y)
       {
-        if (y < _y + _h)
+        if (scaledY < _y + _h)
         {
           _isSliced = true;
         }
