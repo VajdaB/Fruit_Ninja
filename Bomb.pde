@@ -7,7 +7,7 @@ class Bomb extends Fruit
   Bomb()
   {
     super();
-    _bomb = loadImage("fruit_ninja_bomb.jpg");
+    _bomb = loadImage("fruit_ninja_bomb.png");
   }
   
   //explode when 'touched'

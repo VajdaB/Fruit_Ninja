@@ -7,9 +7,10 @@ by Bette and Krithika
 PImage watermelonIMG;
 PImage tomatoIMG;
 PImage pineappleIMG;
-PImage lemonIMG; //<>// //<>//
+PImage lemonIMG;  //<>//
 PImage coconutIMG;
 PImage backgroundIMG;
+PImage img;
 PImage watermelonSlicedIMG;
 
 Fruit[] fruit;
@@ -18,7 +19,8 @@ Bomb bomb;
 int numberOfFruits;
 void setup()
 {
-  background (0);
+  img = loadImage ("background.jpg");
+  background(img);
   size (1000, 700);
   numberOfFruits = (int)random(4);
   fruit = new Fruit[numberOfFruits];
@@ -27,18 +29,11 @@ void setup()
   {
     fruit[i] = new Fruit();
   }
-  /* watermelonIMG = loadImage ("watermelon.png");
-  lemonIMG = loadImage ("lemon.png");
-  pineappleIMG = loadImage ("pineapple.png");
-  coconutIMG = loadImage ("coconut.png");
-  tomatoIMG = loadImage ("tomato.png");
-  backgroundIMG = loadImage ("background.jpg");
-  watermelonSlicedIMG = loadImage ("watermelonSliced.jpg"); */
 }
 
 void draw()
 {
-  background(0);
+  background(img);
   for(int i = 0; i < numberOfFruits;i++)
   {
     fruit[i].Update(mouseX, mouseY);
