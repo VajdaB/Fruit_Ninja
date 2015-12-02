@@ -4,39 +4,28 @@ by Bette and Krithika
 
 */
 
-PImage watermelonIMG;
-PImage tomatoIMG;
-PImage pineappleIMG;
-PImage lemonIMG; //<>// //<>// //<>//
-PImage coconutIMG;
-PImage backgroundIMG;
-PImage watermelonSlicedIMG;
 
-Fruit[] fruit;
-Fruit[] newFruit;
-Bomb bomb;
+Fruit[] notSliced;
+Fruit[] sliced;
+Bomb bomb; //<>//
 Bomb[] newBomb;
+
 //declare global variables
 int numberOfFruits;
 void setup()
 {
+  frameRate(10);
   background (0);
   size (1000, 700);
   numberOfFruits = (int)random(4);
-  fruit = new Fruit[numberOfFruits];
-  newFruit = new Fruit[1];
+  notSliced = new Fruit[numberOfFruits];
+  sliced = new Fruit[numberOfFruits*2];
   bomb = new Bomb();
   for(int i = 0; i<numberOfFruits; i++)
   {
-    fruit[i] = new Fruit();
+    notSliced[i] = new Fruit(4);
+    sliced[i] = new Fruit();
   }
-  /* watermelonIMG = loadImage ("watermelon.png");
-  lemonIMG = loadImage ("lemon.png");
-  pineappleIMG = loadImage ("pineapple.png");
-  coconutIMG = loadImage ("coconut.png");
-  tomatoIMG = loadImage ("tomato.png");
-  backgroundIMG = loadImage ("background.jpg");
-  watermelonSlicedIMG = loadImage ("watermelonSliced.jpg"); */
 }
 
 void draw()
@@ -44,30 +33,19 @@ void draw()
   background(0);
   for(int i = 0; i < numberOfFruits;i++)
   {
-    fruit[i].Update(mouseX, mouseY);
-    fruit[i].Draw();
-    
-  }
-  for(int i = 0; i< numberOfFruits; i++)
-  {
-    if (fruit[i].isSliced() == true)
+    notSliced[i].Update(mouseX, mouseY);
+    notSliced[i].Draw();
+    if (notSliced[i].isSliced() == true)
     {
-      Fruit newFruit;
-      newFruit = new Fruit();
-      newFruit.Update(mouseX, mouseY);
-      newFruit.Draw(); 
+      sliced[i] = null;
+      sliced[i] = notSliced[i];
+      notSliced[i] = null;
+      notSliced[i] = new Fruit(4);
     }
+    sliced[i].Update(mouseX, mouseY);
+    sliced[i].Draw(); 
+    notSliced[i].Update(mouseX, mouseY);
   }
-  for(int i = 0; i< numberOfFruits; i++)
-  {
-    if (fruit[i].isSliced() == true)
-    {
-      Fruit newFruit;
-      newFruit = new Fruit();
-      newFruit.Update(mouseX, mouseY);
-      newFruit.Draw(); 
-    }
-  }
-  bomb.Update(mouseX, mouseY);
-  bomb.explode();
+  //bomb.Update(mouseX, mouseY);
+  //bomb.explode();
 }
