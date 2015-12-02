@@ -15,9 +15,4 @@ knife
 
 The JPGs:
 background
-<<<<<<< HEAD
-}
-=======
-
->>>>>>> origin/master
 */

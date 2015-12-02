@@ -1,5 +1,12 @@
 class Fruit //<>//
 {
+  private PImage watermelonIMG;
+  private PImage tomatoIMG;
+  private PImage pineappleIMG;
+  private PImage lemonIMG; 
+  private PImage coconutIMG;
+  private PImage watermelonSlicedIMG;
+  
   private float _x;
   private float _y;
   private float _w;
@@ -15,8 +22,6 @@ class Fruit //<>//
   private PImage [] _fruitss;
   private PImage[] _fruitssliced;
   
-<<<<<<< HEAD
-
   Fruit() 
   { 
     _fruits = loadImage("black rectangle.jpg");
@@ -45,32 +50,12 @@ class Fruit //<>//
     _fruitssliced[2] = loadImage("slicedlemon.png");
     _fruitssliced[3] = loadImage("slicedcoconut.png");
     _imgSliced = _fruitssliced[_a];
-=======
-  Fruit()
-  {
-    _a = (int)random(5);
-    _fruits = new PImage[5];
-    _fruitsSliced = new PImage[5];
-    _fruits[0] = loadImage("tomato.png");
-    _fruits[1] = loadImage("watermelon.png");
-    _fruits[2] = loadImage("lemon.png");
-    _fruits[3] = loadImage("coconut.png");
-    _fruits[4] = loadImage("pineapple.png");
-    _img = _fruits[_a];
-    _fruitsSliced[0] = loadImage("slicedtomato.png");
-    _fruitsSliced[1] = loadImage("slicedwatermelon.png");
-    _fruitsSliced[2] = loadImage("slicedlemon.png");
-    _fruitsSliced[3] = loadImage("slicedcoconut.png");
-    _fruitsSliced[4] = loadImage("slicedpineapple.png");
-    _imgSliced = _fruitsSliced[_a];
->>>>>>> origin/master
     _x = random(width);
     _y = 0;
     _w = _img.width;
     _h = _img.height;
     _isSliced = false;
   }
-<<<<<<< HEAD
   public void Draw()
   {
     if (!_isSliced)
@@ -92,7 +77,6 @@ class Fruit //<>//
 
     //making it fall
     _y = _y + (random (2, 7));
-    //if(_y > height) _img = null; 
   }
 
   public boolean isSliced()
@@ -100,14 +84,6 @@ class Fruit //<>//
     return _isSliced;
   }
 
-  private void CheckSliced(int x, int y)
-  {
-    if (x > _x)
-    {
-      if (x < _x + _w)
-      {
-        if (y > _y)
-=======
  public void Draw()
  {
    if (!_isSliced)
@@ -120,7 +96,7 @@ class Fruit //<>//
    }
  }
  
- public void Update(int x, int y)
+ public void Update(float x, float y)
  {
    //checking to see if point collides with fruit
    if (!_isSliced)
@@ -138,16 +114,15 @@ class Fruit //<>//
    return _isSliced;
  }
  
- private void CheckSliced(int x, int y)
+ private void CheckSliced(float x, float y)
  {
-  if (scaledX > _x)
+  if (x > _x)
   {
-    if (scaledX < _x + _w)
+    if (x < _x + _w)
     {
-      if (scaledY > _y)
-      {
-        if (scaledY < _y + _h)
->>>>>>> origin/master
+      if (y > _y)
+      {      
+        if (y < _y + _h)
         {
           if (y < _y + _h)
           {

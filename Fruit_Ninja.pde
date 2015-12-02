@@ -15,20 +15,12 @@ import org.openkinect.tests.*;
 KinectTracker tracker;
 Kinect kinect;
 
-<<<<<<< HEAD
-=======
-PImage watermelonIMG;
-PImage tomatoIMG;
-PImage pineappleIMG;
-PImage lemonIMG;  //<>//
-PImage coconutIMG;
+ //<>//
 PImage backgroundIMG;
-PImage watermelonSlicedIMG;
 PImage knifeIMG;
 
 float scaledX;
 float scaledY;
->>>>>>> origin/master
 
 Fruit[] notSliced;
 Fruit[] sliced;
@@ -63,48 +55,23 @@ void draw()
   image (knifeIMG, scaledX, scaledY);
   for(int i = 0; i < numberOfFruits;i++)
   {
-<<<<<<< HEAD
     notSliced[i].Update(mouseX, mouseY);
     notSliced[i].Draw();
     if (notSliced[i].isSliced() == true)
     {
-      sliced[i] = null;
-      sliced[i] = notSliced[i];
-      notSliced[i] = null;
-      notSliced[i] = new Fruit(4);
-=======
-    fruit[i].Update(scaledX, scaledY);
-    fruit[i].Draw();
+        sliced[j] = null;
+        sliced[j] = notSliced[i];
+        notSliced[i] = null;
+        notSliced[i] = new Fruit(4);
+    }
+
+    notSliced[i].Update(scaledX, scaledY);
+    notSliced[i].Draw();
+    sliced[i].Update(scaledX, scaledY);
+    scaled[i].Draw();
     
   }
-  for(int i = 0; i< numberOfFruits; i++)
-  {
-    if (fruit[i].isSliced() == true)
-    {
-      Fruit newFruit;
-      newFruit = new Fruit();
-      newFruit.Update(scaledX, scaledY);
-      newFruit.Draw(); 
-    }
-  }
-  for(int i = 0; i< numberOfFruits; i++)
-  {
-    if (fruit[i].isSliced() == true)
-    {
-      Fruit newFruit;
-      newFruit = new Fruit();
-      newFruit.Update(scaledX, scaledY);
-      newFruit.Draw(); 
->>>>>>> origin/master
-    }
-    sliced[i].Update(mouseX, mouseY);
-    sliced[i].Draw(); 
-    notSliced[i].Update(mouseX, mouseY);
-  }
-<<<<<<< HEAD
-  //bomb.Update(mouseX, mouseY);
-  //bomb.explode();
-=======
+  
   bomb.Update(scaledX, scaledY);
   bomb.explode();
   // Run the tracking analysis
@@ -129,5 +96,4 @@ void draw()
   println(width + "x" + height);
   fill(10,255,95);
   ellipse (scaledX, scaledY, 40, 40);
->>>>>>> origin/master
 }
