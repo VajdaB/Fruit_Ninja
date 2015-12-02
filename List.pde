@@ -8,9 +8,15 @@ lemon
 slicedlemon
 tomato
 slicedtomato
+pineapple
+slicedpineapple
 fruit_ninja_bomb
 
 The JPGs:
 background
+<<<<<<< HEAD
 }
+=======
+
+>>>>>>> origin/master
 */

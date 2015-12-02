@@ -1,4 +1,4 @@
-/* Fruit Ninja style Kinect game
+/* Fruit Ninja style Kinect game //<>//
 
 by Bette and Krithika
 
