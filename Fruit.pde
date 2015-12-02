@@ -50,7 +50,7 @@ class Fruit
    }
  }
  
- public void Update(int x, int y)
+ public void Update(float x, float y)
  {
    //checking to see if point collides with fruit
    if (!_isSliced)
@@ -68,15 +68,15 @@ class Fruit
    return _isSliced;
  }
  
- private void CheckSliced(int x, int y)
+ private void CheckSliced(float x, float y)
  {
-  if (scaledX > _x)
+  if (x > _x)
   {
-    if (scaledX < _x + _w)
+    if (x < _x + _w)
     {
-      if (scaledY > _y)
+      if (y > _y)
       {
-        if (scaledY < _y + _h)
+        if (y < _y + _h)
         {
           _isSliced = true;
         }
