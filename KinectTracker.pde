@@ -36,7 +36,8 @@ class KinectTracker
     lerpedLoc = new PVector(0, 0);
   }
 
-  void track() {
+  void track()
+  {
     // Get the raw depth as array of integers
     depth = kinect.getRawDepth();
 
