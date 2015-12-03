@@ -83,7 +83,10 @@ class Fruit //<>//
   {
     return _isSliced;
   }
-
+  public float getYPos()
+  {
+    return _y;
+  }
  public void Draw()
  {
    if (!_isSliced)
