@@ -59,10 +59,15 @@ void draw()
     notSliced[i].Draw();
     if (notSliced[i].isSliced() == true)
     {
-        sliced[j] = null;
-        sliced[j] = notSliced[i];
-        notSliced[i] = null;
-        notSliced[i] = new Fruit(4);
+      for(int j = 0; j <numberOfFruits*2; j++)
+      {
+        if(sliced[j] == null)
+        {
+          sliced[j] = notSliced[i];
+          notSliced[i] = null;
+          notSliced[i] = new Fruit(4);
+        }
+      }
     }
 
     notSliced[i].Update(scaledX, scaledY);
@@ -70,6 +75,15 @@ void draw()
     sliced[i].Update(scaledX, scaledY);
     scaled[i].Draw();
     
+    //Update position when fruits reach bottom of screen
+    if(sliced[i].getYPos() > height)
+    {
+      sliced[i] = new Fruit();
+    }
+    if(notSliced[i].getYPos() > height)
+    {
+      notSliced[i] = new Fruit(4);
+    }
   }
   
   bomb.Update(scaledX, scaledY);
