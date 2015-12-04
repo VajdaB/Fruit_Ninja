@@ -15,4 +15,5 @@ knife
 
 The JPGs:
 background
+black rectangle
 */

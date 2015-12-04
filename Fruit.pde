@@ -1,11 +1,5 @@
 class Fruit //<>//
 {
-  private PImage watermelonIMG;
-  private PImage tomatoIMG;
-  private PImage pineappleIMG;
-  private PImage lemonIMG; 
-  private PImage coconutIMG;
-  private PImage watermelonSlicedIMG;
 
   private float _x;
   private float _y;
