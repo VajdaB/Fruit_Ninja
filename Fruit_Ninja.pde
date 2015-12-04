@@ -1,4 +1,4 @@
-/*   //<>//
+/*   //<>// //<>//
 
 Fruit Ninja-style Kinect game
 
@@ -15,7 +15,7 @@ import org.openkinect.tests.*;
 
 KinectTracker tracker;
 Kinect kinect;
-
+ //<>//
  //<>//
 PImage backgroundIMG;
 PImage knifeIMG;
@@ -24,7 +24,7 @@ float scaledX;
 float scaledY;
 
 Fruit[] notSliced;
-Fruit[] sliced;
+Fruit[] sliced; //<>//
 Bomb bomb; //<>//
 Bomb[] newBomb;
 
@@ -74,7 +74,7 @@ void draw()
     notSliced[i].Update(scaledX, scaledY);
     notSliced[i].Draw();
     sliced[i].Update(scaledX, scaledY);
-    scaled[i].Draw();
+    sliced[i].Draw();
     
     //Update position when fruits reach bottom of screen
     if(sliced[i].getYPos() > height)
