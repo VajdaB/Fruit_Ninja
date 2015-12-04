@@ -1,4 +1,4 @@
-/*   //<>//
+/*   //<>// //<>//
 
 Fruit Ninja-style Kinect game
 
@@ -16,7 +16,7 @@ import org.openkinect.tests.*;
 KinectTracker tracker;
 Kinect kinect;
 
- //<>//
+ //<>// //<>//
 PImage backgroundIMG;
 PImage knifeIMG;
 
@@ -25,8 +25,8 @@ float scaledY;
 
 Fruit[] notSliced;
 Fruit[] sliced;
-Bomb bomb; //<>//
-Bomb[] newBomb;
+Bomb bomb; //<>// //<>//
+//Bomb[] newBomb;
 
 //declare global variables
 int numberOfFruits;
@@ -86,9 +86,8 @@ void draw()
       notSliced[i] = new Fruit(4);
     }
   }
-  
-  bomb.Update(scaledX, scaledY);
-  bomb.explode();
+  bomb.Draw();
+  bomb.Update();
   // Run the tracking analysis
   tracker.track();
   // Show the image

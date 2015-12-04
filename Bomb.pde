@@ -1,25 +1,20 @@
 class Bomb extends Fruit
 {
-  //declare variables
-  private PImage _bomb;
-  
   //default constructor
   Bomb()
   {
     super();
-    _bomb = loadImage("fruit_ninja_bomb.png");
+    super._img = loadImage("fruit_ninja_bomb.png");
+    super._w = super._img.width;
+    super._h = super._img.height;
   }
   
   //explode when 'touched'
-  public void explode()
+  public void Update(float x, float y)
   {
-   if (!super._isSliced)
+   super.Update(x,y);
+   if (super._isSliced)
    {
-     image(_bomb, super._x, super._y);
-   }
-   else
-   {
-     frameRate(18);
      background(245,15,57);
      exit();
    }
