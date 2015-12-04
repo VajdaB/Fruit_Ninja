@@ -4,7 +4,8 @@ Fruit Ninja-style Kinect game
 
 by Bette and Krithika
 
-Kinect code and Kinect Tracker adapted from Daniel Shiffman
+This code allows a user to play Fruit Ninja, using the person's hands as the slicer
+using Kinect. Kinect code and Kinect Tracker adapted from Daniel Shiffman
 
 */
 import org.openkinect.freenect.*;
