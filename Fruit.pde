@@ -6,7 +6,7 @@ class Fruit //<>//
   private PImage lemonIMG; 
   private PImage coconutIMG;
   private PImage watermelonSlicedIMG;
-  
+
   private float _x;
   private float _y;
   private float _w;
@@ -21,7 +21,7 @@ class Fruit //<>//
   private PImage _fruitsSliced;
   private PImage [] _fruitss;
   private PImage[] _fruitssliced;
-  
+
   Fruit() 
   { 
     _fruits = loadImage("black rectangle.jpg");
@@ -66,8 +66,25 @@ class Fruit //<>//
       image (_imgSliced, _x, _y);
     }
   }
+  
+public float getYPos()
+{
+  return _y;
+}
 
   public void Update(int x, int y)
+  {
+    //checking to see if point collides with fruit
+    if (!_isSliced)
+    {
+      CheckSliced(x, y);
+    }
+
+    //making it fall
+    _y = _y + (random (2, 7));
+  }
+
+  public void Update(float x, float y)
   {
     //checking to see if point collides with fruit
     if (!_isSliced)
@@ -83,53 +100,21 @@ class Fruit //<>//
   {
     return _isSliced;
   }
-  public float getYPos()
+
+  private void CheckSliced(float x, float y)
   {
-    return _y;
-  }
- public void Draw()
- {
-   if (!_isSliced)
-   {
-     image ( _img, _x, _y);
-   }
-   else
-   {
-     image (_imgSliced, _x, _y);
-   }
- }
- 
- public void Update(float x, float y)
- {
-   //checking to see if point collides with fruit
-   if (!_isSliced)
-   {
-     CheckSliced(x, y);
-   }
-   
-   //making it fall
-   _y = _y + (random (2, 7));
-   
- }
- 
- public boolean isSliced()
- {
-   return _isSliced;
- }
- 
- private void CheckSliced(float x, float y)
- {
-  if (x > _x)
-  {
-    if (x < _x + _w)
+    if (x > _x)
     {
-      if (y > _y)
-      {      
-        if (y < _y + _h)
-        {
+      if (x < _x + _w)
+      {
+        if (y > _y)
+        {      
           if (y < _y + _h)
           {
-            _isSliced = true;
+            if (y < _y + _h)
+            {
+              _isSliced = true;
+            }
           }
         }
       }

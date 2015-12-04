@@ -1,4 +1,11 @@
-/*   //<>// //<>//
+import ddf.minim.*; //<>//
+import ddf.minim.analysis.*;
+import ddf.minim.effects.*;
+import ddf.minim.signals.*;
+import ddf.minim.spi.*;
+import ddf.minim.ugens.*;
+
+/*   //<>//
 
 Fruit Ninja-style Kinect game
 
@@ -9,23 +16,23 @@ using Kinect. Kinect code and Kinect Tracker adapted from Daniel Shiffman
 
 */
 import org.openkinect.freenect.*;
-import org.openkinect.freenect2.*;
+import org.openkinect.freenect2.*; //<>//
 import org.openkinect.processing.*;
 import org.openkinect.tests.*;
 
 KinectTracker tracker;
 Kinect kinect;
 
- //<>// //<>//
+ //<>//
 PImage backgroundIMG;
-PImage knifeIMG;
+PImage knifeIMG; //<>//
 
 float scaledX;
 float scaledY;
 
 Fruit[] notSliced;
 Fruit[] sliced;
-Bomb bomb; //<>// //<>//
+Bomb bomb; //<>//
 //Bomb[] newBomb;
 
 //declare global variables
@@ -47,6 +54,9 @@ void setup()
     notSliced[i] = new Fruit(4);
     sliced[i] = new Fruit();
   }
+  minim = new Minim(this);
+  player = minim.loadFile("Fruit Ninja.mp3");
+  player.play();
 }
 
 void draw()
@@ -108,5 +118,14 @@ void draw()
     
   println(kinect.width + "x" + kinect.height);
   println(width + "x" + height);
-  fill(10,255,95);
+  fill(10,255,95); //<>//
+}
+
+
+
+void stop()
+{
+  player.close();
+  minim.stop();
+  super.stop();
 }
