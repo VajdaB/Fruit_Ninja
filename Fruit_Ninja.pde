@@ -110,5 +110,4 @@ void draw()
   println(kinect.width + "x" + kinect.height);
   println(width + "x" + height);
   fill(10,255,95);
-  ellipse (scaledX, scaledY, 40, 40);
 }

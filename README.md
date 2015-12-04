@@ -1,4 +1,4 @@
-<h1>Unit 3 Final Project: Fruit Ninja </h1>
+<h1>Unit 3 Final Project: [[Project Name HERE]]</h1>
 
 <strong>Interaction</strong>:
 
@@ -10,8 +10,7 @@
   <h3>Milestone #1: November 20th, 2015 </h3>
   <strong>Goal:</strong> You should have solid planning done by the end of this milestone.
   <ul>
-    <li> first task : who is doing it (if in team) </li>
-    <li> second task </li>
+    <li>first task : who is doing it (if in team)</li>
   </ul>
 </div>
 
