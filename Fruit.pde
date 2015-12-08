@@ -1,6 +1,6 @@
 class Fruit //<>//
 {
-
+ //<>//
   private float _x;
   private float _y;
   private float _w;
@@ -80,7 +80,7 @@ public float getYPos() //<>//
     _y = _y + (random (2, 7));
   }
 
-  public void Update(float x, float y)
+  public void Update(float x, float y) //<>//
   {
     //checking to see if point collides with fruit
     if (!_isSliced)
