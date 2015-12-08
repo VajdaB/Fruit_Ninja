@@ -1,4 +1,4 @@
-class Fruit //<>//
+class Fruit //<>// //<>// //<>// //<>//
 {
  //<>//
   private float _x;
@@ -38,15 +38,13 @@ class Fruit //<>//
     _fruitss[1] = loadImage("watermelon.png");
     _fruitss[2] = loadImage("lemon.png");
     _fruitss[3] = loadImage("coconut.png");
-    _fruitss[3] = loadImage("pineapple.png");
     _img = _fruitss[_a];
     _fruitssliced[0] = loadImage("slicedtomato.png");
     _fruitssliced[1] = loadImage("slicedwatermelon.png");
-    _fruitssliced[2] = loadImage("slicedlemon.png");
+    _fruitssliced[2] = loadImage("slicedlemon.png"); //<>//
     _fruitssliced[3] = loadImage("slicedcoconut.png");
-    _fruitssliced[4] = loadImage("slicedpineapple.png");
     _imgSliced = _fruitssliced[_a];
-    _x = random(width);
+    _x = random(width); //<>//
     _y = 0;
     _w = _img.width;
     _h = _img.height;
@@ -55,7 +53,7 @@ class Fruit //<>//
   public void Draw()
   {
     if (!_isSliced)
-    {
+    { //<>//
       image ( _img, _x, _y);
     } else
     {
@@ -63,9 +61,9 @@ class Fruit //<>//
     }
   }
   
-public float getYPos() //<>//
+public float getYPos()
 {
-  return _y;
+  return _y; //<>//
 }
 
   public void Update(int x, int y)
@@ -80,9 +78,9 @@ public float getYPos() //<>//
     _y = _y + (random (2, 7));
   }
 
-  public void Update(float x, float y) //<>//
+  public void Update(float x, float y)
   {
-    //checking to see if point collides with fruit
+    //checking to see if point collides with fruit //<>//
     if (!_isSliced)
     {
       CheckSliced(x, y);

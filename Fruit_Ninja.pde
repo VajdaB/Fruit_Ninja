@@ -1,4 +1,4 @@
-/* //<>//
+/* //<>// //<>// //<>//
 
 Fruit Ninja-style Kinect game
 
@@ -10,25 +10,26 @@ Kinect code and Kinect Tracker codes adapted from Daniel Shiffman.
 */
 
 import org.openkinect.freenect.*;
-import org.openkinect.freenect2.*;
+import org.openkinect.freenect2.*; //<>//
 import org.openkinect.processing.*;
 import org.openkinect.tests.*;
 
 import ddf.minim.*;
 import ddf.minim.analysis.*;
-import ddf.minim.effects.*; //<>//
+import ddf.minim.effects.*; //<>// //<>//
 import ddf.minim.signals.*;
 import ddf.minim.spi.*;
 import ddf.minim.ugens.*;
 
-KinectTracker tracker;
-Kinect kinect;
 
 AudioPlayer player;
 Minim minim; //<>//
 
-PImage backgroundIMG;
+PImage backgroundIMG; //<>//
 PImage knifeIMG;
+
+KinectTracker tracker;
+Kinect kinect;
 
 float scaledX;
 float scaledY;
@@ -48,12 +49,13 @@ void setup()
   numberOfFruits = (int)random(4,8);
   notSliced = new Fruit[numberOfFruits];
   sliced = new Fruit[90];
-  bomb = new Bomb();
   kinect = new Kinect(this);
   tracker = new KinectTracker();
+  bomb = new Bomb();
+  
   for(int i = 0; i<numberOfFruits; i++)
   {
-    notSliced[i] = new Fruit(5);
+    notSliced[i] = new Fruit(4);
   }
   for(int i = 0; i<90;i ++)
   {
@@ -66,12 +68,24 @@ void setup()
 
 void draw()
 {
+  tracker.track();
+  // Show the image
+  tracker.display();
+  
+  PVector v2 = tracker.getLerpedPos();
+  fill(100, 250, 50, 200);
+  noStroke();
+
+  scaledX = map(v2.x, 0, kinect.width, 0, width);
+  scaledY = map(v2.y, 0, kinect.height, 0, height);
+
   background(0);
   noCursor();
+  
   image (knifeIMG, scaledX, scaledY);
   for(int i = 0; i < numberOfFruits;i++)
   {
-    notSliced[i].Update(mouseX, mouseY);
+    notSliced[i].Update(scaledX, scaledY);
     notSliced[i].Draw();
     if (notSliced[i].isSliced() == true)
     {
@@ -81,7 +95,7 @@ void draw()
         {
           sliced[j] = notSliced[i];
           notSliced[i] = null;
-          notSliced[i] = new Fruit(5);
+          notSliced[i] = new Fruit(4);
         }
       }
     }
@@ -98,31 +112,12 @@ void draw()
     }
     if(notSliced[i].getYPos() > height)
     {
-      notSliced[i] = new Fruit(5);
+      notSliced[i] = new Fruit(4);
     }
   }
   
   bomb.Update(scaledX, scaledY);
-  bomb.explode();
-  // Run the tracking analysis
-  tracker.track();
-  // Show the image
-  //tracker.display();
-
-  // Let's draw the "lerped" location
-  PVector v2 = tracker.getLerpedPos();
-  fill(100, 250, 50, 200);
-  noStroke();
-
-  // Display some info
-  int t = tracker.getThreshold();
-  fill(0);
-    
-  // Scaled the lerped position 
-  scaledX = map(v2.x, 0, kinect.width, 0, width);
-  scaledY = map(v2.y, 0, kinect.height, 0, height);
-    
-  fill(10,255,95);
+  bomb.explode(); //<>//
 }
 
 void stop()
