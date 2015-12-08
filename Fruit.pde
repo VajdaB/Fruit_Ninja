@@ -17,7 +17,7 @@ class Fruit //<>//
   private PImage[] _fruitssliced;
 
   Fruit() 
-  { 
+  {  //<>//
     _fruits = loadImage("black rectangle.jpg");
     _fruitsSliced = loadImage("black rectangle.jpg");
     _img = _fruits;
@@ -38,11 +38,13 @@ class Fruit //<>//
     _fruitss[1] = loadImage("watermelon.png");
     _fruitss[2] = loadImage("lemon.png");
     _fruitss[3] = loadImage("coconut.png");
+    _fruitss[3] = loadImage("pineapple.png");
     _img = _fruitss[_a];
     _fruitssliced[0] = loadImage("slicedtomato.png");
     _fruitssliced[1] = loadImage("slicedwatermelon.png");
     _fruitssliced[2] = loadImage("slicedlemon.png");
     _fruitssliced[3] = loadImage("slicedcoconut.png");
+    _fruitssliced[4] = loadImage("slicedpineapple.png");
     _imgSliced = _fruitssliced[_a];
     _x = random(width);
     _y = 0;
@@ -61,7 +63,7 @@ class Fruit //<>//
     }
   }
   
-public float getYPos()
+public float getYPos() //<>//
 {
   return _y;
 }
