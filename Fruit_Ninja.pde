@@ -1,11 +1,10 @@
-/*   //<>// //<>//
-
+/* //<>// //<>//
 Fruit Ninja-style Kinect game
 
 by Bette and Krithika
 
-This code allows a user to play Fruit Ninja, using the person's hands as the slicer
-using Kinect. Kinect code and Kinect Tracker adapted from Daniel Shiffman
+This code allows a user to play Fruit Ninja with their hand as the slicer. 
+Kinect code and Kinect Tracker codes adapted from Daniel Shiffman.
 
 */
 
@@ -19,7 +18,7 @@ import org.openkinect.tests.*;
 import ddf.minim.*;
 import ddf.minim.analysis.*;
 import ddf.minim.effects.*;
-import ddf.minim.signals.*;
+import ddf.minim.signals.*; //<>//
 import ddf.minim.spi.*;
 import ddf.minim.ugens.*;
 
@@ -30,16 +29,21 @@ Kinect kinect;
 PImage backgroundIMG; //<>//
 PImage knifeIMG; //<>//
 
+AudioPlayer player;
+Minim minim; //<>// //<>//
+
 float scaledX;
 float scaledY;
 
 //Instantiating the classes made
 Fruit[] notSliced;
 Fruit[] sliced;
-Bomb bomb; //<>//
+Bomb[] bomb; //<>//
 
 //declare global variables
 int numberOfFruits;
+int numberOfBombs;
+
 void setup()
 {
   frameRate(10);
@@ -49,32 +53,59 @@ void setup()
   numberOfFruits = (int)random(3,8);
   notSliced = new Fruit[numberOfFruits];
   sliced = new Fruit[90];
-  bomb = new Bomb();
+
   kinect = new Kinect(this);
   tracker = new KinectTracker();
+  bomb = new Bomb();
+  
   for(int i = 0; i<numberOfFruits; i++)
   {
     notSliced[i] = new Fruit(4);
   }
-  for(int i = 0; i <90; i++)
+
+  for(int i = 0; i<90;i ++)
   {
     sliced[i] = new Fruit();
   }
   minim = new Minim(this);
   player = minim.loadFile("Fruit Ninja.mp3");
   player.play();
+  
+  //determine how many bombs fall
+  numberOfBombs = (int)random(3,5);
+  bomb = new Bomb[numberOfBombs];
+  for(int i = 0; i<numberOfBombs; i++)
+  {
+    bomb[i] = new Bomb();
+  } 
 }
 
 void draw()
 {
+  tracker.track();
+  // Show the image
+  tracker.display();
+  
+  PImage background;
+  background = loadImage("background.jpg");
+  background(background);
+  
+  PVector v2 = tracker.getLerpedPos();
+  fill(100, 250, 50, 200);
+  noStroke();
+
+  scaledX = map(v2.x, 0, kinect.width, 0, width);
+  scaledY = map(v2.y, 0, kinect.height, 0, height);
+
   background(0);
   noCursor();
+  
   image (knifeIMG, scaledX, scaledY);
   
   //Make fruits fall and get sliced
   for(int i = 0; i < numberOfFruits;i++)
   {
-    notSliced[i].Update(mouseX, mouseY);
+    notSliced[i].Update(scaledX, scaledY);
     notSliced[i].Draw();
     
     //switch a fruit to the sliced array if a not sliced fruit is sliced.
@@ -95,7 +126,7 @@ void draw()
     notSliced[i].Update(scaledX, scaledY);
     notSliced[i].Draw();
     sliced[i].Update(scaledX, scaledY);
-    scaled[i].Draw();
+    sliced[i].Draw();
     
     //Update position when fruits reach bottom of screen
     if(sliced[i].getYPos() > height)
@@ -108,9 +139,12 @@ void draw()
     }
   }
   //Draw and update the bomb
-  bomb.Draw();
-  bomb.Update(scaledX, scaledY);
-  
+  for(int i = 0; i<numberOfBombs; i++)
+  {
+    bomb[i].Draw();
+    bomb[i].Update(scaledX, scaledY);
+    if(bomb[i].getYPos() > height) bomb[i] = new Bomb();
+  }
   // Run the tracking analysis
   tracker.track();
   
@@ -135,7 +169,7 @@ void draw()
   fill(10,255,95); //<>//
 }
 
-//Stop the music
+ //<>//
 void stop()
 {
   player.close();
