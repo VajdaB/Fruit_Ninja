@@ -18,8 +18,8 @@ class Fruit //<>// //<>// //<>// //<>//
 
   Fruit() 
   {  //<>//
-    _fruits = loadImage("black rectangle.jpg");
-    _fruitsSliced = loadImage("black rectangle.jpg");
+    _fruits = loadImage("brown square.jpg");
+    _fruitsSliced = loadImage("brown square.jpg");
     _img = _fruits;
     _imgSliced = _fruitsSliced;
     _x = 0;

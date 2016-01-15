@@ -1,4 +1,4 @@
-/* //<>// //<>// //<>//
+/*  //<>//
 
 Fruit Ninja-style Kinect game
 
@@ -72,6 +72,10 @@ void draw()
   // Show the image
   tracker.display();
   
+  PImage background;
+  background = loadImage("background.jpg");
+  background(background);
+  
   PVector v2 = tracker.getLerpedPos();
   fill(100, 250, 50, 200);
   noStroke();
@@ -116,8 +120,8 @@ void draw()
     }
   }
   
-  bomb.Update(scaledX, scaledY);
-  bomb.explode(); //<>//
+  bomb.Draw();
+  bomb.Update(scaledX, scaledY); //<>//
 }
 
 void stop()
