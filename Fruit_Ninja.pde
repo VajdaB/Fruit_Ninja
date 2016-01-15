@@ -1,11 +1,4 @@
-import ddf.minim.*; //<>//
-import ddf.minim.analysis.*;
-import ddf.minim.effects.*;
-import ddf.minim.signals.*;
-import ddf.minim.spi.*;
-import ddf.minim.ugens.*;
-
-/*   //<>//
+/*   //<>// //<>//
 
 Fruit Ninja-style Kinect game
 
@@ -15,25 +8,35 @@ This code allows a user to play Fruit Ninja, using the person's hands as the sli
 using Kinect. Kinect code and Kinect Tracker adapted from Daniel Shiffman
 
 */
+
+//Kinect Libraries for mac version
 import org.openkinect.freenect.*;
 import org.openkinect.freenect2.*; //<>//
 import org.openkinect.processing.*;
 import org.openkinect.tests.*;
 
+//The minim library used for sound
+import ddf.minim.*;
+import ddf.minim.analysis.*;
+import ddf.minim.effects.*;
+import ddf.minim.signals.*;
+import ddf.minim.spi.*;
+import ddf.minim.ugens.*;
+
 KinectTracker tracker;
 Kinect kinect;
 
- //<>//
-PImage backgroundIMG;
+//Images used
+PImage backgroundIMG; //<>//
 PImage knifeIMG; //<>//
 
 float scaledX;
 float scaledY;
 
+//Instantiating the classes made
 Fruit[] notSliced;
 Fruit[] sliced;
 Bomb bomb; //<>//
-//Bomb[] newBomb;
 
 //declare global variables
 int numberOfFruits;
@@ -43,15 +46,18 @@ void setup()
   background (0);
   size (1000, 700);
   knifeIMG = loadImage ("knife.png");
-  numberOfFruits = (int)random(4);
+  numberOfFruits = (int)random(3,8);
   notSliced = new Fruit[numberOfFruits];
-  sliced = new Fruit[numberOfFruits*2];
+  sliced = new Fruit[90];
   bomb = new Bomb();
   kinect = new Kinect(this);
   tracker = new KinectTracker();
   for(int i = 0; i<numberOfFruits; i++)
   {
     notSliced[i] = new Fruit(4);
+  }
+  for(int i = 0; i <90; i++)
+  {
     sliced[i] = new Fruit();
   }
   minim = new Minim(this);
@@ -64,10 +70,14 @@ void draw()
   background(0);
   noCursor();
   image (knifeIMG, scaledX, scaledY);
+  
+  //Make fruits fall and get sliced
   for(int i = 0; i < numberOfFruits;i++)
   {
     notSliced[i].Update(mouseX, mouseY);
     notSliced[i].Draw();
+    
+    //switch a fruit to the sliced array if a not sliced fruit is sliced.
     if (notSliced[i].isSliced() == true)
     {
       for(int j = 0; j <numberOfFruits*2; j++)
@@ -80,7 +90,8 @@ void draw()
         }
       }
     }
-
+    
+    //draw and update the sliced and not sliced fruits
     notSliced[i].Update(scaledX, scaledY);
     notSliced[i].Draw();
     sliced[i].Update(scaledX, scaledY);
@@ -96,10 +107,13 @@ void draw()
       notSliced[i] = new Fruit(4);
     }
   }
+  //Draw and update the bomb
   bomb.Draw();
-  bomb.Update();
+  bomb.Update(scaledX, scaledY);
+  
   // Run the tracking analysis
   tracker.track();
+  
   // Show the image
   //tracker.display();
 
@@ -121,8 +135,7 @@ void draw()
   fill(10,255,95); //<>//
 }
 
-
-
+//Stop the music
 void stop()
 {
   player.close();
