@@ -10,7 +10,7 @@ class KinectTracker
 
   // Depth threshold; make smaller to have the person
   //be closer
-  int threshold = 745;
+  int threshold = 645;
 
   // Raw location
   PVector loc;
@@ -24,7 +24,8 @@ class KinectTracker
   // What we'll show the user
   PImage display;
    
-  KinectTracker() {
+  KinectTracker() 
+  {
     // This is an awkard use of a global variable here
     // But doing it this way for simplicity
     kinect.initDepth();
@@ -77,11 +78,13 @@ class KinectTracker
     return lerpedLoc;
   }
 
-  PVector getPos() {
+  PVector getPos()
+  {
     return loc;
   }
 
-  void display() {
+  void display() 
+  {
     PImage img = kinect.getDepthImage();
 
     // Being overly cautious here
@@ -90,32 +93,38 @@ class KinectTracker
     // Going to rewrite the depth image to show which pixels are in threshold
     // A lot of this is redundant, but this is just for demonstration purposes
     display.loadPixels();
-    for (int x = 0; x < kinect.width; x++) {
-      for (int y = 0; y < kinect.height; y++) {
+    for (int x = 0; x < kinect.width; x++) 
+    {
+      for (int y = 0; y < kinect.height; y++) 
+      {
 
         int offset = x + y * kinect.width;
         // Raw depth
         int rawDepth = depth[offset];
         int pix = x + y * display.width;
-        if (rawDepth < threshold) {
+        if (rawDepth < threshold) 
+        {
           // A red color instead
           display.pixels[pix] = color(150, 50, 50);
-        } else {
+        } else 
+        {
           display.pixels[pix] = img.pixels[offset];
-        }
+        } //<>//
       }
     }
     display.updatePixels();
 
     // Draw the image
-    image(display, 0, 0); //<>//
+    image(display, 0, 0);
   }
 
-  int getThreshold() {
+  int getThreshold() 
+  {
     return threshold;
   }
 
-  void setThreshold(int t) {
+  void setThreshold(int t) 
+  {
     threshold =  t;
   }
 }

@@ -14,11 +14,16 @@ class Bomb extends Fruit //<>//
   //explode when 'touched'
   public void Update(int x, int y)
   {
-    super.Update(x,y);
-    super._y = super._y + (int)random(3,7);
+    if (!super._isSliced)
+    {
+     super.CheckSliced(x, y);
+    }
+
+    //making it fall
+    super._y = super._y + (int)random(3,6);
     if(super._isSliced)
     {
-      background(245,15,57);
+      background(245,15,67);
       exit();
     }
   }
