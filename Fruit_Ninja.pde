@@ -30,7 +30,7 @@ PImage backgroundIMG; //<>//
 PImage knifeIMG; //<>//
 
 AudioPlayer player;
-Minim minim; //<>// //<>//
+Minim minim;  //<>//
 
 float scaledX;
 float scaledY;
@@ -169,8 +169,8 @@ void draw()
   fill(10,255,95); //<>//
 }
 
- //<>//
-void stop()
+
+void stop() //<>//
 {
   player.close();
   minim.stop();
