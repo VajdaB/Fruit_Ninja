@@ -140,7 +140,10 @@ void draw()
   {
     bomb[i].Draw();
     bomb[i].Update(scaledX, scaledY);
-    if(bomb[i].getYPos() > height) bomb[i] = new Bomb();
+    if(bomb[i].getYPos() > height) 
+    {
+      bomb[i] = new Bomb();
+    }
   }
   // Run the tracking analysis
   tracker.track();

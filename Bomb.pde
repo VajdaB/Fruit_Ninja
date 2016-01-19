@@ -17,13 +17,15 @@ class Bomb extends Fruit //<>//
     if (!super._isSliced)
     {
      super.CheckSliced(x, y);
+     print("Checking the Bomb");
     }
-
+    
     //making it fall
     super._y = super._y + (int)random(3,6);
     if(super._isSliced)
     {
       background(245,15,67);
+      print("I am a sliced Bomb");
       exit();
     }
   }
