@@ -37,7 +37,7 @@
   <h3>Milestone #4: January 22th, 2016 </h3>
   <strong>Goal:</strong> You should have iterated and improved on your prototype by the end of this milestone.
   <ul>
-    <li>Krithika will work on getting the bomb to work on Kinect version. 
-    <li>Bette will work on adding more fruits, putting in the background, working on getting the kinect to work </li>
+    <li>Krithika will work on getting the bomb to work on Kinect version, making sure that the bombs don't show up on the gameover screen. 
+    <li>Bette will work on adding more fruits, putting in the background for intro and the gameover screen </li>
   </ul>
 </p>
