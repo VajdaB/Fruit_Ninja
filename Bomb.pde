@@ -8,7 +8,6 @@ class Bomb extends Fruit //<>//
     super._img = loadImage("fruit_ninja_bomb.png");
     super._w = super._img.width;
     super._h = super._img.height;
-    //super._fruitsSliced = loadImage ("brown square.jpg");
   }
   
   //explode when 'touched'

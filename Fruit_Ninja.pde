@@ -156,7 +156,7 @@ void draw()
       gameover1 = loadImage("gameover.png");
       frameRate (1);
       background(gameover1);
-      //print("I am a sliced Bomb");
+      print("I am a sliced Bomb");
       exit();
   }
   // Run the tracking analysis
