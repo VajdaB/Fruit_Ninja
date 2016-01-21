@@ -8,7 +8,7 @@ class Bomb extends Fruit //<>//
     super._img = loadImage("fruit_ninja_bomb.png");
     super._w = super._img.width;
     super._h = super._img.height;
-    
+    //super._fruitsSliced = loadImage ("brown square.jpg");
   }
   
   //explode when 'touched'
@@ -20,9 +20,8 @@ class Bomb extends Fruit //<>//
     super._y = super._y + (int)random(3,6);
     if(super._isSliced)
     {
-      background(245,15,67);
-      print("I am a sliced Bomb");
-      exit();
+      gameover = true;
+      
     }
   }
 }

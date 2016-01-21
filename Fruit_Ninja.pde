@@ -43,6 +43,7 @@ Bomb[] bomb;
 //declare global variables
 int numberOfFruits;
 int numberOfBombs;
+boolean gameover;
 
 void setup()
 {
@@ -50,7 +51,7 @@ void setup()
   frameRate(10);
   size (1000, 700);
   knifeIMG = loadImage ("knife.png");
-  
+  gameover = false;
   //setting array size
   numberOfFruits = (int)random(4,9);
   notSliced = new Fruit[numberOfFruits];
@@ -148,6 +149,15 @@ void draw()
     {
       bomb[i] = new Bomb();
     }
+  }
+  if(gameover == true)
+  {
+      PImage gameover1;
+      gameover1 = loadImage("gameover.png");
+      frameRate (1);
+      background(gameover1);
+      //print("I am a sliced Bomb");
+      exit();
   }
   // Run the tracking analysis
   tracker.track();
