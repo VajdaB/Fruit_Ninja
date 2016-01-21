@@ -1,4 +1,4 @@
-/* //<>// //<>// //<>//
+/*  //<>//
 Fruit Ninja-style Kinect game
 
 by Bette and Krithika
@@ -46,9 +46,12 @@ int numberOfBombs;
 
 void setup()
 {
+  //setting the basic format
   frameRate(10);
   size (1000, 700);
   knifeIMG = loadImage ("knife.png");
+  
+  //setting array size
   numberOfFruits = (int)random(4,9);
   notSliced = new Fruit[numberOfFruits];
   sliced = new Fruit[90];
@@ -56,6 +59,7 @@ void setup()
   kinect = new Kinect(this);
   tracker = new KinectTracker();
   
+  //setting
   for(int i = 0; i<numberOfFruits; i++)
   {
     notSliced[i] = new Fruit(5);
